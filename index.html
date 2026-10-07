@@ -239,7 +239,7 @@ h1{font-weight:500;letter-spacing:-0.035em}
   var grid=document.querySelector('.tiles');
   var tiles=[].slice.call(document.querySelectorAll('.tile'));
   if(!grid||!tiles.length) return;
-  var open=0;
+  var open=-1;
   function cols(){return getComputedStyle(grid).gridTemplateColumns.split(' ').length||1}
   function layout(){
     var c=cols();
