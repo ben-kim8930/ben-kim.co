@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="김종원(Ben Kim)의 이력과 강연 기록.">
+<meta property="og:title" content="김종원 Ben Kim">
+<meta property="og:description" content="김종원(Ben Kim)의 이력과 강연 기록.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://ben-kim.co/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>김종원 Ben Kim</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+/* 레이아웃: 좌측 정렬 단일 컬럼. 왼쪽에 연도, 오른쪽에 사실. 선과 여백만으로 구분. */
+:root{
+  --bg:#fbfbfa; --fg:#16181a; --muted:#6c7175; --line:#e3e4e2; --mark:#eef0ee;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121415; --fg:#eceeed; --muted:#8f9599; --line:#2a2d2f; --mark:#1d2022; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121415; --fg:#eceeed; --muted:#8f9599; --line:#2a2d2f; --mark:#1d2022; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.75;
+  font-weight:400;padding-inline:24px;padding-block:0;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+a:hover{text-decoration-color:var(--fg)}
+a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.page{max-width:720px;margin:0 auto;padding-block:112px 96px;display:flex;flex-direction:column;gap:72px}
+h1{font-size:clamp(34px,7vw,52px);font-weight:300;letter-spacing:-0.03em;line-height:1.2;margin:0}
+.en{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.04em;margin-top:14px}
+.contact{margin-top:40px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mail{font-family:var(--mono);font-size:14px;user-select:all}
+.social{display:flex;flex-wrap:wrap;gap:4px 20px;color:var(--muted)}
+.group{display:flex;flex-direction:column}
+.label{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--muted);letter-spacing:.06em;margin:0 0 20px}
+.item{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 32px;border-top:1px solid var(--line);padding-block:28px}
+.year{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:4px;font-variant-numeric:tabular-nums}
+.item > div{min-width:0}
+h3{font-size:17px;font-weight:500;margin:0;letter-spacing:-0.01em}
+.role{color:var(--muted);font-size:14px;margin:2px 0 0}
+ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+p{margin:0}
+.refs{margin-top:14px;display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--muted)}
+.reflabel{flex-basis:100%;font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+.talks{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.talk{display:grid;grid-template-columns:120px minmax(0,1fr);gap:32px}
+.talk .year{padding-top:0;line-height:1.9}
+@media (max-width:560px){.talk{grid-template-columns:48px minmax(0,1fr);gap:16px}}
+.todo{background:var(--mark);color:var(--muted);padding:1px 6px;border-radius:3px;font-size:13px}
+footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media (max-width:560px){
+  .page{padding-block:64px;gap:56px}
+  .item{grid-template-columns:1fr;gap:6px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>김종원</h1>
+    <div class="en">Ben Kim</div>
+    <div class="contact">
+      <span class="mail">ben.kim8930@gmail.com</span>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/ben-%EC%A2%85%EC%9B%90-kim-674617166/">LinkedIn</a>
+        <a href="https://www.facebook.com/wannystory">Facebook</a>
+        <a href="https://www.instagram.com/kjw8930/">Instagram</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="group">
+    <h2 class="label">이력</h2>
+
+    <div class="item">
+      <div class="year">2021</div>
+      <div>
+        <h3><a href="https://longblack.co/">롱블랙</a></h3>
+        <p class="role">(주)타임앤코 공동창업자</p>
+        <ul>
+          <li>국내 최초 24시간 타임리미트형 구독 서비스 기획</li>
+          <li>네이밍부터 비즈니스 모델, 브랜딩까지 서비스와 사업 전반 설계</li>
+          <li>롱블랙 콘텐츠 일본 진출 주도</li>
+        </ul>
+        <div class="refs"><span class="reflabel">관련 기사</span>
+          <a href="https://n.news.naver.com/mnews/article/006/0000111610?sid=105">미디어오늘</a>
+          <a href="https://www.venturesquare.net/973769">벤처스퀘어</a>
+          <a href="https://corp.newspicks.com/info/20250620">NewsPicks 보도자료</a>
+          <a href="https://newspicks.com/user/2535/">NewsPicks 롱블랙</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="year">2019</div>
+      <div>
+        <h3><a href="https://www.folin.co/">폴인</a></h3>
+        <p class="role">중앙일보 · 사업 총괄</p>
+        <ul>
+          <li>폴인 멤버십 전환</li>
+          <li>서비스 전반의 비즈니스 모델 설계</li>
+        </ul>
+        <div class="refs"><span class="reflabel">관련 기사</span>
+          <a href="https://www.journalist.or.kr/news/article.html?no=47648">기자협회보 1</a>
+          <a href="https://www.journalist.or.kr/m/m_article.html?no=46924">기자협회보 2</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="year">2017</div>
+      <div>
+        <h3>리디북스</h3>
+        <p class="role">마케팅팀 · 신사업개발팀 리더</p>
+        <ul>
+          <li>전자책 콘텐츠 마케팅, 이북 단말기 마케팅 주도</li>
+          <li>리디셀렉트 런칭 및 오리지널 콘텐츠 기획</li>
+          <li>책 끝을 접다(모두먼트) 인수 주도</li>
+        </ul>
+        <div class="refs"><span class="reflabel">관련 기사</span>
+          <a href="https://n.news.naver.com/mnews/article/023/0003394971?sid=103">조선일보</a>
+          <a href="https://it.chosun.com/news/articleView.html?idxno=2018091202741">IT조선 · 리디셀렉트</a>
+          <a href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=202431">디지털투데이</a>
+          <a href="https://it.chosun.com/news/articleView.html?idxno=2018061802407">IT조선 · 인수</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="year">2016</div>
+      <div>
+        <h3>51페이지</h3>
+        <p class="role">동네서점 창업</p>
+        <ul>
+          <li>서점 운영과 콘텐츠, 행사 기획</li>
+          <li>국내 최초 동네서점 에디션 기획 및 운영</li>
+        </ul>
+        <div class="refs"><span class="reflabel">관련 기사</span>
+          <a href="https://www.donga.com/news/article/all/20161119/81413066/1">동아일보</a>
+          <a href="https://www.etoday.co.kr/news/view/1511840">이투데이</a>
+          <a href="https://n.news.naver.com/mnews/article/028/0002373441?sid=103">한겨레</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="year">2009</div>
+      <div>
+        <h3>동아미디어엔</h3>
+        <p class="role">동아일보 · 사업기획팀장</p>
+        <ul>
+          <li><a href="https://dbr.donga.com/">동아비즈니스리뷰</a> 온·오프라인 사업 기획 및 팀 리드</li>
+          <li><a href="https://www.hbrkorea.com/">하버드비즈니스리뷰</a> 한국판 창간, 온·오프라인 사업 기획 및 팀 리드</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="year">2006</div>
+      <div>
+        <h3><a href="https://www.kbs.co.kr/">KBS미디어</a></h3>
+        <p class="role">온라인 서비스 운영 기획</p>
+        <ul>
+          <li>콘텐츠 유료 구독 서비스 conpia 운영 및 기획</li>
+          <li>KBS 온라인 홈페이지 운영 및 기획</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="label">강연</h2>
+
+    <div class="talks">
+      <div class="talk"><span class="year">2026</span><a href="https://m.blog.naver.com/kmablog/224189003215">한국능률협회(KMA)</a></div>
+      <div class="talk"><span class="year">2025</span><a href="https://www.youtube.com/watch?v=ZHw1A_RhTjQ&amp;t=114s">월급쟁이 부사장 EP36</a></div>
+      <div class="talk"><span class="year">2023</span><a href="https://www.news1.kr/industry/sb-founded/5065654">시몬스 스튜디오 시즌 2</a></div>
+    </div>
+  </div>
+
+  <footer>서울 · 2026</footer>
+</div>
+</body>
+</html>
