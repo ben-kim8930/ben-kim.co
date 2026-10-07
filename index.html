@@ -66,7 +66,9 @@ p{margin:0}
 @media (max-width:560px){.talk{grid-template-columns:48px minmax(0,1fr);gap:16px}}
 .todo{background:var(--mark);color:var(--muted);padding:1px 6px;border-radius:3px;font-size:13px}
 footer{font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:20px;display:flex;flex-wrap:wrap;gap:4px 24px;font-variant-numeric:tabular-nums}
+footer{align-items:center}
 footer .mail{font-size:12px}
+#visits{writing-mode:vertical-rl;text-orientation:sideways;line-height:1}
 @media (max-width:560px){
   .page{padding-block:64px;gap:56px}
   .item{grid-template-columns:1fr;gap:6px}
@@ -225,7 +227,7 @@ footer .mail{font-size:12px}
     .then(function(r){return r.ok?r.json():null})
     .then(function(d){
       if(!d||typeof d.count!=='number') return;
-      el.textContent='방문 '+d.count.toLocaleString('ko-KR');
+      el.textContent=d.count.toLocaleString('ko-KR');
       el.hidden=false;
       try{sessionStorage.setItem('v','1')}catch(e){}
     }).catch(function(){});
