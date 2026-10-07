@@ -47,8 +47,19 @@ h3{font-size:17px;font-weight:500;margin:0;letter-spacing:-0.01em}
 .role{color:var(--muted);font-size:14px;margin:2px 0 0}
 ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
 p{margin:0}
-.refs{margin-top:14px;display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--muted)}
-.reflabel{flex-basis:100%;font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+.refs{margin-top:16px}
+.refs summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;list-style:none;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted);padding:4px 0}
+.refs summary::-webkit-details-marker{display:none}
+.refs summary::before{content:"+";display:inline-block;width:10px}
+.refs[open] summary::before{content:"−"}
+.refs summary:hover{color:var(--fg)}
+.refs summary:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.cards{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.card{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:6px;padding:14px 16px;text-decoration:none;min-width:0}
+.card:hover{border-color:var(--muted)}
+.cmeta{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.03em}
+.ctitle{font-size:14px;font-weight:500;line-height:1.5}
+.cdesc{font-size:13px;color:var(--muted);line-height:1.6}
 .talks{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:4px;font-size:14px}
 .talk{display:grid;grid-template-columns:120px minmax(0,1fr);gap:32px}
 .talk .year{padding-top:0;line-height:1.9}
@@ -89,12 +100,21 @@ footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
           <li>네이밍부터 비즈니스 모델, 브랜딩까지 서비스와 사업 전반 설계</li>
           <li>롱블랙 콘텐츠 일본 진출 주도</li>
         </ul>
-        <div class="refs"><span class="reflabel">관련 기사</span>
-          <a target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/006/0000111610?sid=105">미디어오늘</a>
-          <a target="_blank" rel="noopener" href="https://www.venturesquare.net/973769">벤처스퀘어</a>
-          <a target="_blank" rel="noopener" href="https://corp.newspicks.com/info/20250620">NewsPicks 보도자료</a>
-          <a target="_blank" rel="noopener" href="https://newspicks.com/user/2535/">NewsPicks 롱블랙</a>
-        </div>
+        <details class="refs">
+          <summary>관련 기사 10</summary>
+          <div class="cards">
+          <a class="card" target="_blank" rel="noopener" href="https://www.venturesquare.net/973769"><span class="cmeta">벤처스퀘어 · 2025.06.20</span><span class="ctitle">롱블랙, 日 뉴스픽스와 콘텐츠 파트너십 체결</span><span class="cdesc">지식 콘텐츠 서비스 롱블랙이 일본 뉴스픽스와 제휴해 일본 시장에 진출한다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://corp.newspicks.com/info/20250620"><span class="cmeta">NewsPicks · 2025.06.20</span><span class="ctitle">NewsPicks、韓国発次世代メディア「LongBlack」とのコンテンツ連携を開始</span><span class="cdesc">뉴스픽스가 롱블랙과 콘텐츠 연계를 시작하고, 주 1회 인기 기사를 일본어로 제공한다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://magazine.hankyung.com/job-joy/article/202505020601d"><span class="cmeta">한경 JOB&JOY · 2025.05.02</span><span class="ctitle">롱블랙, 스토리 컨퍼런스 2025 성료 "AI 시대에도 사람은 대체 불가능"</span><span class="cdesc">롱블랙이 연 스토리 컨퍼런스 2025가 마무리됐다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.efnews.co.kr/news/articleView.html?idxno=110750"><span class="cmeta">파이낸셜신문 · 2024.03.24</span><span class="ctitle">LG유플러스 '너겟', 롱블랙과 손잡고 콘텐츠 경험 혁신 추진</span><span class="cdesc">너겟이 롱블랙과 협력해 2030세대 고객에게 콘텐츠를 제공한다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.mt.co.kr/future/2024/01/23/2024012215571562638"><span class="cmeta">머니투데이 · 2024.01.23</span><span class="ctitle">돈내도 하루 뒤엔 못본다…'롱블랙' 운영사, 테크분야 'Ep9' 출시</span><span class="cdesc">타임앤코가 테크 비즈니스 콘텐츠 플랫폼 Ep9을 출시했다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.mt.co.kr/future/2023/09/27/2023092709550666297"><span class="cmeta">머니투데이 · 2023.09.27</span><span class="ctitle">24시간 지나면 '펑'…구독 미디어 '롱블랙' 누적조회수 2500만회 돌파</span><span class="cdesc">롱블랙이 누적 조회수 2500만 회를 넘겼다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.econovill.com/news/articleView.html?idxno=601867"><span class="cmeta">이코노믹리뷰 · 2023.02.07</span><span class="ctitle">시간 제한 구독 미디어 롱블랙, MAU 20만명 돌파</span><span class="cdesc">롱블랙이 월간 활성 이용자 20만 명을 달성했다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.techm.kr/news/articleView.html?idxno=92733"><span class="cmeta">테크M · 2022.01.03</span><span class="ctitle">카카오벤처스, 지식 콘텐츠 서비스 '롱블랙'에 11억원 투자</span><span class="cdesc">롱블랙이 카카오벤처스로부터 11억 원 시드 투자를 유치했다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/006/0000111610?sid=105"><span class="cmeta">미디어오늘</span><span class="ctitle">24시간 지나면 사라지는 콘텐츠, 돈 내고 구독하는 이유</span><span class="cdesc">콘텐츠 구독 서비스 롱블랙… 24시간 지나면 사라지는 역발상</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://newspicks.com/user/2535/"><span class="cmeta">NewsPicks</span><span class="ctitle">LongBlack</span><span class="cdesc">뉴스픽스 안의 롱블랙 채널 페이지.</span></a>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -107,10 +127,13 @@ footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
           <li>폴인 멤버십 전환</li>
           <li>서비스 전반의 비즈니스 모델 설계</li>
         </ul>
-        <div class="refs"><span class="reflabel">관련 기사</span>
-          <a target="_blank" rel="noopener" href="https://www.journalist.or.kr/news/article.html?no=47648">기자협회보 1</a>
-          <a target="_blank" rel="noopener" href="https://www.journalist.or.kr/m/m_article.html?no=46924">기자협회보 2</a>
-        </div>
+        <details class="refs">
+          <summary>관련 기사 2</summary>
+          <div class="cards">
+          <a class="card" target="_blank" rel="noopener" href="https://www.journalist.or.kr/news/article.html?no=47648"><span class="cmeta">기자협회보 · 2020.05.08</span><span class="ctitle">밑줄 그어가며 읽고픈 종이신문이 나왔다고?</span><span class="cdesc">폴인이 발행한 종이신문이 독자들에게 호평을 받았다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.journalist.or.kr/m/m_article.html?no=46924"><span class="cmeta">기자협회보 · 2019.11.27</span><span class="ctitle">팝송이 들리는, 자갈 깔린 성수동 빈티지 가게… 중앙 ‘폴인’ 오프라인으로</span><span class="cdesc">서울숲길의 15평 매장에서 30~40대 직장인들이 점심시간을 보낸다.</span></a>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -122,14 +145,17 @@ footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
         <ul>
           <li>전자책 콘텐츠 마케팅, 이북 단말기 마케팅 주도</li>
           <li>리디셀렉트 런칭 및 오리지널 콘텐츠 기획</li>
-          <li>책 끝을 접다(모두먼트) 인수 주도</li>
+          <li>책 끝을 접다(디노먼트) 인수 주도</li>
         </ul>
-        <div class="refs"><span class="reflabel">관련 기사</span>
-          <a target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/023/0003394971?sid=103">조선일보</a>
-          <a target="_blank" rel="noopener" href="https://it.chosun.com/news/articleView.html?idxno=2018091202741">IT조선 · 리디셀렉트</a>
-          <a target="_blank" rel="noopener" href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=202431">디지털투데이</a>
-          <a target="_blank" rel="noopener" href="https://it.chosun.com/news/articleView.html?idxno=2018061802407">IT조선 · 인수</a>
-        </div>
+        <details class="refs">
+          <summary>관련 기사 4</summary>
+          <div class="cards">
+          <a class="card" target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/023/0003394971?sid=103"><span class="cmeta">조선일보</span><span class="ctitle">‘책 심폐소생’으로 베스트셀러 1위 역주행</span><span class="cdesc">작년 출간된 ‘돌이킬 수 없는 약속’, 소셜미디어 업고 단박에 10만 부.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://it.chosun.com/news/articleView.html?idxno=2018091202741"><span class="cmeta">IT조선 · 2018.09.12</span><span class="ctitle">리디셀렉트, ‘하버드 비즈니스 리뷰’ 국내 독점 공급</span><span class="cdesc">리디가 HBR 코리아와 계약을 맺고 리디셀렉트에서 전자책 콘텐츠를 독점 공급한다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=202431"><span class="cmeta">디지털투데이 · 2018.08.30</span><span class="ctitle">전자책도 넷플릭스처럼...리디북스, 첫 오리지널 콘텐츠 선보여</span><span class="cdesc">리디셀렉트의 첫 오리지널 콘텐츠로 장강명 작가의 SF소설 『노라』 연재를 시작했다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://it.chosun.com/news/articleView.html?idxno=2018061802407"><span class="cmeta">IT조선 · 2018.06.18</span><span class="ctitle">리디북스, ‘책 끝을 접다’ 운영 디노먼트 인수</span><span class="cdesc">리디가 ‘책 끝을 접다’를 운영하는 디노먼트를 인수했다고 밝혔다.</span></a>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -142,11 +168,14 @@ footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
           <li>서점 운영과 콘텐츠, 행사 기획</li>
           <li>국내 최초 동네서점 에디션 기획 및 운영</li>
         </ul>
-        <div class="refs"><span class="reflabel">관련 기사</span>
-          <a target="_blank" rel="noopener" href="https://www.donga.com/news/article/all/20161119/81413066/1">동아일보</a>
-          <a target="_blank" rel="noopener" href="https://www.etoday.co.kr/news/view/1511840">이투데이</a>
-          <a target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/028/0002373441?sid=103">한겨레</a>
-        </div>
+        <details class="refs">
+          <summary>관련 기사 3</summary>
+          <div class="cards">
+          <a class="card" target="_blank" rel="noopener" href="https://www.donga.com/news/article/all/20161119/81413066/1"><span class="cmeta">동아일보 · 2016.11.19</span><span class="ctitle">[토요판 커버스토리] 동네서점의 부활</span><span class="cdesc">최근 1, 2년 사이 전국 곳곳에 작은 동네서점들이 생겨나고 있다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.etoday.co.kr/news/view/1511840"><span class="cmeta">이투데이 · 2017.07.07</span><span class="ctitle">동네서점에서만 파는 특별한 책을 아시나요?</span><span class="cdesc">민음사가 동네서점 90곳과 함께 대형서점에서 팔지 않는 특별판을 낸다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/028/0002373441?sid=103"><span class="cmeta">한겨레</span><span class="ctitle">국내 최초 ‘동네서점’에서만 팔아요</span><span class="cdesc">민음사가 전국 동네서점 130여 곳에서만 파는 ‘쏜살 문고 동네 서점 에디션’을 출간했다.</span></a>
+          </div>
+        </details>
       </div>
     </div>
 
