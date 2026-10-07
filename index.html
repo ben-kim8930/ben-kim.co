@@ -65,7 +65,8 @@ p{margin:0}
 .talk .year{padding-top:0;line-height:1.9}
 @media (max-width:560px){.talk{grid-template-columns:48px minmax(0,1fr);gap:16px}}
 .todo{background:var(--mark);color:var(--muted);padding:1px 6px;border-radius:3px;font-size:13px}
-footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
+footer{font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:20px;display:flex;flex-wrap:wrap;gap:4px 24px;font-variant-numeric:tabular-nums}
+footer .mail{font-size:12px}
 @media (max-width:560px){
   .page{padding-block:64px;gap:56px}
   .item{grid-template-columns:1fr;gap:6px}
@@ -214,7 +215,7 @@ footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
     </div>
   </div>
 
-  <footer>서울 · 2026<span id="visits" hidden></span></footer>
+  <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span><span id="visits" hidden></span></footer>
 </div>
 <script>
 (function(){
@@ -224,7 +225,7 @@ footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
     .then(function(r){return r.ok?r.json():null})
     .then(function(d){
       if(!d||typeof d.count!=='number') return;
-      el.textContent=' · 방문 '+d.count.toLocaleString('ko-KR');
+      el.textContent='방문 '+d.count.toLocaleString('ko-KR');
       el.hidden=false;
       try{sessionStorage.setItem('v','1')}catch(e){}
     }).catch(function(){});
