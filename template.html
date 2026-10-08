@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="김종원(Ben Kim)의 이력과 강연 기록.">
+<meta property="og:title" content="김종원 Ben Kim">
+<meta property="og:description" content="김종원(Ben Kim)의 이력과 강연 기록.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://ben-kim.co/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>김종원 Ben Kim</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+/* 레이아웃: 좌측 정렬 단일 컬럼. 왼쪽에 연도, 오른쪽에 사실. 선과 여백만으로 구분. */
+:root{
+  --bg:#f4ecdf; --fg:#1a1714; --muted:#6f675c; --line:#dcd1c0; --mark:#eadfce; --surface:#faf5ec;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#191613; --fg:#efe8dc; --muted:#9a9186; --line:#35302a; --mark:#26221d; --surface:#211d19; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#191613; --fg:#efe8dc; --muted:#9a9186; --line:#35302a; --mark:#26221d; --surface:#211d19; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.75;
+  font-weight:400;padding-inline:24px;padding-block:0;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+a:hover{text-decoration-color:var(--fg)}
+a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.page{max-width:720px;margin:0 auto;padding-block:112px 96px;display:flex;flex-direction:column;gap:72px}
+h1{font-size:clamp(34px,7vw,52px);font-weight:300;letter-spacing:-0.03em;line-height:1.2;margin:0}
+.en{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.04em;margin-top:14px}
+.contact{margin-top:40px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.mail{font-family:var(--mono);font-size:14px;user-select:all}
+.social{display:flex;flex-wrap:wrap;gap:4px 20px;color:var(--muted)}
+.group{display:flex;flex-direction:column}
+.label{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--muted);letter-spacing:.06em;margin:0 0 20px}
+.item{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 32px;border-top:1px solid var(--line);padding-block:28px}
+.year{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:4px;font-variant-numeric:tabular-nums}
+.item > div{min-width:0}
+h3{font-size:17px;font-weight:500;margin:0;letter-spacing:-0.01em}
+.role{color:var(--muted);font-size:14px;margin:2px 0 0}
+ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+p{margin:0}
+.refs{margin-top:16px}
+.refs summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;list-style:none;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted);padding:4px 0}
+.refs summary::-webkit-details-marker{display:none}
+.refs summary::before{content:"+";display:inline-block;width:10px}
+.refs[open] summary::before{content:"−"}
+.refs summary:hover{color:var(--fg)}
+.refs summary:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.cards{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.card{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:6px;padding:14px 16px;text-decoration:none;min-width:0}
+.card:hover{border-color:var(--muted)}
+.cmeta{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.03em}
+.ctitle{font-size:14px;font-weight:500;line-height:1.5}
+.cdesc{font-size:13px;color:var(--muted);line-height:1.6}
+.talks{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.talk{display:grid;grid-template-columns:120px minmax(0,1fr);gap:32px}
+.talk .year{padding-top:0;line-height:1.9}
+@media (max-width:560px){.talk{grid-template-columns:48px minmax(0,1fr);gap:16px}}
+.todo{background:var(--mark);color:var(--muted);padding:1px 6px;border-radius:3px;font-size:13px}
+footer{font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:20px;display:flex;flex-wrap:wrap;gap:4px 24px;font-variant-numeric:tabular-nums}
+footer{align-items:center}
+footer .mail{font-size:12px}
+#visits{font-style:italic}
+@media (max-width:560px){
+  .page{padding-block:64px;gap:56px}
+  .item{grid-template-columns:1fr;gap:6px}
+}
+
+h1{font-weight:500;letter-spacing:-0.035em}
+/* 타일과 내용이 한 덩어리로 보이도록: 열린 타일과 패널이 같은 면 색을 쓰고 맞붙는다 */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:8px;row-gap:8px}
+.tile{appearance:none;font:inherit;color:var(--fg);background:transparent;border:0;border-top:1px solid var(--line);padding:12px 14px 16px;min-height:88px;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;align-items:end;gap:6px 8px;text-align:left;cursor:pointer;transition:background .15s}
+.tyear{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;align-self:start}
+.tmark{font-family:var(--mono);font-size:14px;color:var(--muted);align-self:start;line-height:1.4}
+.tmark::before{content:"+"}
+.tile[aria-expanded="true"] .tmark::before{content:"−"}
+.tname{grid-column:1/-1;font-size:clamp(17px,3.2vw,21px);font-weight:500;letter-spacing:-0.02em;line-height:1.25}
+.tile:hover{background:var(--mark)}
+.tile[aria-expanded="true"]{background:var(--surface);border-top:2px solid var(--fg);padding-top:11px;padding-bottom:24px;margin-bottom:-8px}
+.tile:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.panel{grid-column:1/-1;background:var(--surface);padding:24px 20px 28px;min-width:0}
+.phead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px}
+.prole{font-size:18px;font-weight:500;letter-spacing:-0.01em}
+.plink{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.reflabel{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted);margin:28px 0 12px}
+.panel ul{font-size:16px;gap:6px;margin-top:16px}
+.panel ul li{padding-left:16px;position:relative}
+.panel ul li::before{content:"";position:absolute;left:0;top:.8em;width:6px;height:1px;background:var(--fg)}
+.panel .reflabel{margin-top:36px;padding-top:16px;border-top:1px solid var(--line)}
+.panel .cards{gap:0 24px;margin-top:0}
+.panel .card{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:12px 0;gap:3px}
+.panel .card:hover .ctitle{text-decoration:underline;text-underline-offset:3px}
+.panel .ctitle{font-size:13.5px;font-weight:400}
+.panel .cdesc{font-size:12.5px}
+.panel .cmeta{font-size:10.5px}
+@media (max-width:560px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{min-height:80px}.panel{padding:20px 16px 24px}}
+@media (prefers-reduced-motion:reduce){.tile{transition:none}}
+.social{gap:4px 14px;align-items:center}
+.sns{display:inline-flex;padding:4px;margin:-4px;color:var(--fg);text-decoration:none}
+.sns:hover{color:var(--muted)}
+.ico{display:block;height:20px;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.ico-fb{aspect-ratio:72/72;--m:url(data:image/png;base64,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)}
+.ico-in{aspect-ratio:85/72;--m:url(data:image/png;base64,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)}
+.ico-ig{aspect-ratio:72/72;--m:url(data:image/png;base64,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)}
+.talks{border-top:1px solid var(--line);padding-top:16px;display:block;font-size:15px;line-height:1.9;max-width:38em}
+.card span{overflow-wrap:anywhere}
+.card [lang="ja"]{word-break:normal;line-break:strict}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>김종원</h1>
+    <div class="en">Ben Kim</div>
+    <div class="contact">
+      <span class="mail">ben.kim8930@gmail.com</span>
+      <div class="social">
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/wannystory" class="sns" aria-label="Facebook" title="Facebook"><span class="ico ico-fb"></span></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/ben-%EC%A2%85%EC%9B%90-kim-674617166/" class="sns" aria-label="LinkedIn" title="LinkedIn"><span class="ico ico-in"></span></a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/kjw8930/" class="sns" aria-label="Instagram" title="Instagram"><span class="ico ico-ig"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="group">
+    <h2 class="label">이력</h2>
+
+    <div class="tiles">
+      <button class="tile" type="button" id="t-0" aria-controls="p-0" aria-expanded="false"><span class="tyear">{{0.year}}</span><span class="tmark" aria-hidden="true"></span><span class="tname">{{0.name}}</span></button>
+      <button class="tile" type="button" id="t-1" aria-controls="p-1" aria-expanded="false"><span class="tyear">{{1.year}}</span><span class="tmark" aria-hidden="true"></span><span class="tname">{{1.name}}</span></button>
+      <button class="tile" type="button" id="t-2" aria-controls="p-2" aria-expanded="false"><span class="tyear">{{2.year}}</span><span class="tmark" aria-hidden="true"></span><span class="tname">{{2.name}}</span></button>
+      <button class="tile" type="button" id="t-3" aria-controls="p-3" aria-expanded="false"><span class="tyear">{{3.year}}</span><span class="tmark" aria-hidden="true"></span><span class="tname">{{3.name}}</span></button>
+      <button class="tile" type="button" id="t-4" aria-controls="p-4" aria-expanded="false"><span class="tyear">{{4.year}}</span><span class="tmark" aria-hidden="true"></span><span class="tname">{{4.name}}</span></button>
+      <button class="tile" type="button" id="t-5" aria-controls="p-5" aria-expanded="false"><span class="tyear">{{5.year}}</span><span class="tmark" aria-hidden="true"></span><span class="tname">{{5.name}}</span></button>
+      <div class="panel" id="p-0" role="region" aria-labelledby="t-0">
+        <div class="phead"><p class="prole">{{0.role}}</p><a class="plink" target="_blank" rel="noopener" href="https://longblack.co/">사이트 열기</a></div>
+        {{0.bullets}}
+        <p class="reflabel">관련 기사 10</p>
+        <div class="cards">
+          <a class="card" target="_blank" rel="noopener" href="https://www.venturesquare.net/973769"><span class="cmeta">벤처스퀘어 · 2025.06.20</span><span class="ctitle">롱블랙, 日 뉴스픽스와 콘텐츠 파트너십 체결</span><span class="cdesc">지식 콘텐츠 서비스 롱블랙이 일본 뉴스픽스와 제휴해 일본 시장에 진출한다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://corp.newspicks.com/info/20250620"><span class="cmeta">NewsPicks · 2025.06.20</span><span class="ctitle" lang="ja">NewsPicks、韓国発次世代メディア「LongBlack」とのコンテンツ連携を開始</span><span class="cdesc">뉴스픽스가 롱블랙과 콘텐츠 연계를 시작하고, 주 1회 인기 기사를 일본어로 제공한다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://magazine.hankyung.com/job-joy/article/202505020601d"><span class="cmeta">한경 JOB&JOY · 2025.05.02</span><span class="ctitle">롱블랙, 스토리 컨퍼런스 2025 성료 "AI 시대에도 사람은 대체 불가능"</span><span class="cdesc">롱블랙이 연 스토리 컨퍼런스 2025가 마무리됐다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.efnews.co.kr/news/articleView.html?idxno=110750"><span class="cmeta">파이낸셜신문 · 2024.03.24</span><span class="ctitle">LG유플러스 '너겟', 롱블랙과 손잡고 콘텐츠 경험 혁신 추진</span><span class="cdesc">너겟이 롱블랙과 협력해 2030세대 고객에게 콘텐츠를 제공한다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.mt.co.kr/future/2024/01/23/2024012215571562638"><span class="cmeta">머니투데이 · 2024.01.23</span><span class="ctitle">돈내도 하루 뒤엔 못본다…'롱블랙' 운영사, 테크분야 'Ep9' 출시</span><span class="cdesc">타임앤코가 테크 비즈니스 콘텐츠 플랫폼 Ep9을 출시했다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.mt.co.kr/future/2023/09/27/2023092709550666297"><span class="cmeta">머니투데이 · 2023.09.27</span><span class="ctitle">24시간 지나면 '펑'…구독 미디어 '롱블랙' 누적조회수 2500만회 돌파</span><span class="cdesc">롱블랙이 누적 조회수 2500만 회를 넘겼다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.econovill.com/news/articleView.html?idxno=601867"><span class="cmeta">이코노믹리뷰 · 2023.02.07</span><span class="ctitle">시간 제한 구독 미디어 롱블랙, MAU 20만명 돌파</span><span class="cdesc">롱블랙이 월간 활성 이용자 20만 명을 달성했다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.techm.kr/news/articleView.html?idxno=92733"><span class="cmeta">테크M · 2022.01.03</span><span class="ctitle">카카오벤처스, 지식 콘텐츠 서비스 '롱블랙'에 11억원 투자</span><span class="cdesc">롱블랙이 카카오벤처스로부터 11억 원 시드 투자를 유치했다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/006/0000111610?sid=105"><span class="cmeta">미디어오늘</span><span class="ctitle">24시간 지나면 사라지는 콘텐츠, 돈 내고 구독하는 이유</span><span class="cdesc">콘텐츠 구독 서비스 롱블랙… 24시간 지나면 사라지는 역발상</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://newspicks.com/user/2535/"><span class="cmeta">NewsPicks</span><span class="ctitle">LongBlack</span><span class="cdesc">뉴스픽스 안의 롱블랙 채널 페이지.</span></a>
+        </div>
+      </div>
+      <div class="panel" id="p-1" role="region" aria-labelledby="t-1">
+        <div class="phead"><p class="prole">{{1.role}}</p><a class="plink" target="_blank" rel="noopener" href="https://www.folin.co/">사이트 열기</a></div>
+        {{1.bullets}}
+        <p class="reflabel">관련 기사 2</p>
+        <div class="cards">
+          <a class="card" target="_blank" rel="noopener" href="https://www.journalist.or.kr/news/article.html?no=47648"><span class="cmeta">기자협회보 · 2020.05.08</span><span class="ctitle">밑줄 그어가며 읽고픈 종이신문이 나왔다고?</span><span class="cdesc">폴인이 발행한 종이신문이 독자들에게 호평을 받았다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.journalist.or.kr/m/m_article.html?no=46924"><span class="cmeta">기자협회보 · 2019.11.27</span><span class="ctitle">팝송이 들리는, 자갈 깔린 성수동 빈티지 가게… 중앙 ‘폴인’ 오프라인으로</span><span class="cdesc">서울숲길의 15평 매장에서 30~40대 직장인들이 점심시간을 보낸다.</span></a>
+        </div>
+      </div>
+      <div class="panel" id="p-2" role="region" aria-labelledby="t-2">
+        <div class="phead"><p class="prole">{{2.role}}</p></div>
+        {{2.bullets}}
+        <p class="reflabel">관련 기사 4</p>
+        <div class="cards">
+          <a class="card" target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/023/0003394971?sid=103"><span class="cmeta">조선일보</span><span class="ctitle">‘책 심폐소생’으로 베스트셀러 1위 역주행</span><span class="cdesc">작년 출간된 ‘돌이킬 수 없는 약속’, 소셜미디어 업고 단박에 10만 부.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://it.chosun.com/news/articleView.html?idxno=2018091202741"><span class="cmeta">IT조선 · 2018.09.12</span><span class="ctitle">리디셀렉트, ‘하버드 비즈니스 리뷰’ 국내 독점 공급</span><span class="cdesc">리디가 HBR 코리아와 계약을 맺고 리디셀렉트에서 전자책 콘텐츠를 독점 공급한다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.digitaltoday.co.kr/news/articleView.html?idxno=202431"><span class="cmeta">디지털투데이 · 2018.08.30</span><span class="ctitle">전자책도 넷플릭스처럼...리디북스, 첫 오리지널 콘텐츠 선보여</span><span class="cdesc">리디셀렉트의 첫 오리지널 콘텐츠로 장강명 작가의 SF소설 『노라』 연재를 시작했다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://it.chosun.com/news/articleView.html?idxno=2018061802407"><span class="cmeta">IT조선 · 2018.06.18</span><span class="ctitle">리디북스, ‘책 끝을 접다’ 운영 디노먼트 인수</span><span class="cdesc">리디가 ‘책 끝을 접다’를 운영하는 디노먼트를 인수했다고 밝혔다.</span></a>
+        </div>
+      </div>
+      <div class="panel" id="p-3" role="region" aria-labelledby="t-3">
+        <div class="phead"><p class="prole">{{3.role}}</p></div>
+        {{3.bullets}}
+        <p class="reflabel">관련 기사 3</p>
+        <div class="cards">
+          <a class="card" target="_blank" rel="noopener" href="https://www.donga.com/news/article/all/20161119/81413066/1"><span class="cmeta">동아일보 · 2016.11.19</span><span class="ctitle">[토요판 커버스토리] 동네서점의 부활</span><span class="cdesc">최근 1, 2년 사이 전국 곳곳에 작은 동네서점들이 생겨나고 있다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://www.etoday.co.kr/news/view/1511840"><span class="cmeta">이투데이 · 2017.07.07</span><span class="ctitle">동네서점에서만 파는 특별한 책을 아시나요?</span><span class="cdesc">민음사가 동네서점 90곳과 함께 대형서점에서 팔지 않는 특별판을 낸다.</span></a>
+          <a class="card" target="_blank" rel="noopener" href="https://n.news.naver.com/mnews/article/028/0002373441?sid=103"><span class="cmeta">한겨레</span><span class="ctitle">국내 최초 ‘동네서점’에서만 팔아요</span><span class="cdesc">민음사가 전국 동네서점 130여 곳에서만 파는 ‘쏜살 문고 동네 서점 에디션’을 출간했다.</span></a>
+        </div>
+      </div>
+      <div class="panel" id="p-4" role="region" aria-labelledby="t-4">
+        <div class="phead"><p class="prole">{{4.role}}</p></div>
+        {{4.bullets}}
+      </div>
+      <div class="panel" id="p-5" role="region" aria-labelledby="t-5">
+        <div class="phead"><p class="prole">{{5.role}}</p><a class="plink" target="_blank" rel="noopener" href="https://www.kbs.co.kr/">사이트 열기</a></div>
+        {{5.bullets}}
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="label">강연</h2>
+
+    <p class="talks"><a target="_blank" rel="noopener" href="https://m.blog.naver.com/kmablog/224189003215">한국능률협회(KMA)</a>, <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ZHw1A_RhTjQ&amp;t=114s">월급쟁이부사장 EP36</a>, <a target="_blank" rel="noopener" href="https://www.news1.kr/industry/sb-founded/5065654">시몬스 스튜디오</a>, <a target="_blank" rel="noopener" href="https://www.conan.team/">CONAN 콘텐츠 얼라이언스</a>, 삼성물산, 롯데백화점, 하이아웃풋클럽, 동아일보, HFK코리아 등</p>
+  </div>
+
+  <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span><span id="visits" hidden></span></footer>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('visits'); if(!el) return;
+  var seen=false; try{seen=sessionStorage.getItem('v')==='1'}catch(e){}
+  fetch('/api/visits',{method:seen?'GET':'POST'})
+    .then(function(r){return r.ok?r.json():null})
+    .then(function(d){
+      if(!d||typeof d.count!=='number') return;
+      el.textContent=d.count.toLocaleString('ko-KR');
+      el.hidden=false;
+      try{sessionStorage.setItem('v','1')}catch(e){}
+    }).catch(function(){});
+})();
+</script>
+<script>
+(function(){
+  var grid=document.querySelector('.tiles');
+  var tiles=[].slice.call(document.querySelectorAll('.tile'));
+  if(!grid||!tiles.length) return;
+  var open=-1;
+  function cols(){return getComputedStyle(grid).gridTemplateColumns.split(' ').length||1}
+  function layout(){
+    var c=cols();
+    tiles.forEach(function(t,k){
+      var isOpen=k===open, p=document.getElementById(t.getAttribute('aria-controls'));
+      t.style.order=k*10;
+      t.setAttribute('aria-expanded',isOpen?'true':'false');
+      p.hidden=!isOpen;
+      // 패널은 자기 타일이 있는 줄 바로 아래에 놓는다
+      p.style.order=(Math.floor(k/c)*c+c-1)*10+5;
+    });
+  }
+  tiles.forEach(function(t,k){
+    t.addEventListener('click',function(){
+      open=(open===k)?-1:k; layout();
+      if(open===k){
+        var p=document.getElementById(t.getAttribute('aria-controls'));
+        if(p.scrollIntoView) p.scrollIntoView({block:'nearest',behavior:'smooth'});
+      }
+    });
+  });
+  window.addEventListener('resize',layout);
+  layout();
+})();
+</script>
+</body>
+</html>
