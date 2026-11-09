@@ -1,3 +1,32 @@
 {
-  "items": []
+  "items": [
+    {
+      "image": "/img/projects/pasted-image-1794226471145.png",
+      "title": "롱블랙 x 뉴스픽스 협업 계약",
+      "year": "",
+      "link": "https://corp.newspicks.com/info/20250620",
+      "hidden": false
+    },
+    {
+      "image": "/img/projects/longblack-conf2025-day2-0178.png",
+      "title": "2025 롱블랙 스토리 컨퍼런스",
+      "year": "",
+      "link": "https://magazine.hankyung.com/job-joy/article/202505020601d",
+      "hidden": false
+    },
+    {
+      "image": "/img/projects/pasted-image-1794226751986.png",
+      "title": "카카오 벤처스, 롱블랙 투자",
+      "year": "",
+      "link": "https://www.techm.kr/news/articleView.html?idxno=92733",
+      "hidden": false
+    },
+    {
+      "image": "/img/projects/pasted-image-1794226814703.png",
+      "title": "국내 최초, 동네서점 에디션",
+      "year": "",
+      "link": "https://n.news.naver.com/mnews/article/028/0002373441?sid=103",
+      "hidden": false
+    }
+  ]
 }
