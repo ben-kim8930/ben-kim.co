@@ -1,7 +1,5 @@
   <div class="group reel-group">
-    <h2 class="label">프로젝트</h2>
     <div class="reel" id="reel" aria-label="프로젝트 이미지. 좌우로 끌어 넘길 수 있습니다"><div class="reel-row" id="reel-a"></div><div class="reel-row" id="reel-b"></div></div>
-    <p class="reel-note">끌거나 밀어서 넘길 수 있습니다</p>
     <script type="application/json" id="reel-data">{{reel.data}}</script>
   </div>
 <style>
@@ -18,7 +16,6 @@ html{overflow-x:clip}
 .reel-y{font-family:var(--mono);font-size:11px;opacity:.85}
 .reel-item:hover .reel-cap,.reel-item:focus-visible .reel-cap{opacity:1}
 .reel-item:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
-.reel-note{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em;margin-top:14px}
 @media (hover:none){.reel-cap{opacity:1}}
 @media (max-width:560px){.reel-item{height:150px}.reel-row + .reel-row .reel-item{height:112px}}
 </style>

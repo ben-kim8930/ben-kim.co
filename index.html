@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>김종원 Ben Kim</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
 <style>
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -47,7 +47,7 @@ h1{font-size:clamp(34px,7vw,52px);font-weight:300;letter-spacing:-0.03em;line-he
 .mail{font-family:var(--mono);font-size:14px;user-select:all}
 .social{display:flex;flex-wrap:wrap;gap:4px 20px;color:var(--muted)}
 .group{display:flex;flex-direction:column}
-.label{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--muted);letter-spacing:.06em;margin:0 0 20px}
+.label{font-family:var(--sans);font-size:17px;font-weight:600;color:var(--fg);letter-spacing:-0.01em;line-height:1.4;margin:0 0 16px}
 .item{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 32px;border-top:1px solid var(--line);padding-block:28px}
 .year{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:4px;font-variant-numeric:tabular-nums}
 .item > div{min-width:0}
@@ -299,9 +299,7 @@ h1{font-weight:500;letter-spacing:-0.035em}
   </div>
 
   <div class="group reel-group">
-    <h2 class="label">프로젝트</h2>
     <div class="reel" id="reel" aria-label="프로젝트 이미지. 좌우로 끌어 넘길 수 있습니다"><div class="reel-row" id="reel-a"></div><div class="reel-row" id="reel-b"></div></div>
-    <p class="reel-note">끌거나 밀어서 넘길 수 있습니다</p>
     <script type="application/json" id="reel-data">[{"image":"/img/projects/web/pasted-image-1794226471145.webp","title":"롱블랙 x 뉴스픽스 협업","year":"","link":"https://corp.newspicks.com/info/20250620"},{"image":"/img/projects/web/longblack-conf2025-day2-0178.webp","title":"2025  컨퍼런스","year":"","link":"https://magazine.hankyung.com/job-joy/article/202505020601d"},{"image":"/img/projects/web/pasted-image-1794226751986.webp","title":"롱블랙 투자 유치","year":"","link":"https://www.techm.kr/news/articleView.html?idxno=92733"},{"image":"/img/projects/web/pasted-image-1794226814703.webp","title":"국내 최초, 동네서점 에디션","year":"","link":"https://n.news.naver.com/mnews/article/028/0002373441?sid=103"},{"image":"/img/projects/web/19222816-bddf-4400-9e56-43149cdd056a-2048x1648.webp","title":"폴인 페이퍼","year":"","link":"https://brunch.co.kr/@folin/89"},{"image":"/img/projects/web/pasted-image-1794230244661.webp","title":"폴인 라이브러리","year":"","link":"https://www.journalist.or.kr/m/m_article.html?no=46924"},{"image":"/img/projects/web/pasted-image-1794230422457.webp","title":"리디 무료책 마케팅","year":"","link":"https://n.news.naver.com/mnews/article/023/0003394971?sid=103"},{"image":"/img/projects/web/pasted-image-1794230559469.webp","title":"오리지널 콘텐츠","year":"","link":"https://it.chosun.com/news/articleView.html?idxno=2018091202741"},{"image":"/img/projects/web/pasted-image-1794230793579.webp","title":"롱블랙 카페","year":"","link":""},{"image":"/img/projects/web/dji_mimo_20260916_104550_0137_1789800579737_photo.webp","title":"롱블랙 카페","year":"","link":""},{"image":"/img/projects/web/pasted-image-1794231472434.webp","title":"뉴스픽스","year":"","link":""},{"image":"/img/projects/web/pasted-image-1794231504922.webp","title":"책 끝을 접다 인수","year":"","link":""},{"image":"/img/projects/web/dji_mimo_20260911_175748_0008_1789117466840_photo.webp","title":"롱블랙 성수 카페","year":"","link":""},{"image":"/img/projects/web/r0011933.webp","title":"롱블랙 x 에어로케이","year":"","link":""}]</script>
   </div>
 <style>
@@ -318,7 +316,6 @@ html{overflow-x:clip}
 .reel-y{font-family:var(--mono);font-size:11px;opacity:.85}
 .reel-item:hover .reel-cap,.reel-item:focus-visible .reel-cap{opacity:1}
 .reel-item:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
-.reel-note{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em;margin-top:14px}
 @media (hover:none){.reel-cap{opacity:1}}
 @media (max-width:560px){.reel-item{height:150px}.reel-row + .reel-row .reel-item{height:112px}}
 </style>
