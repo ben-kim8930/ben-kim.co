@@ -298,6 +298,102 @@ h1{font-weight:500;letter-spacing:-0.035em}
     </div>
   </div>
 
+  <div class="group reel-group">
+    <h2 class="label">프로젝트</h2>
+    <div class="reel" id="reel" aria-label="프로젝트 이미지. 좌우로 끌어 넘길 수 있습니다"><div class="reel-row" id="reel-a"></div><div class="reel-row" id="reel-b"></div></div>
+    <p class="reel-note">끌거나 밀어서 넘길 수 있습니다</p>
+    <script type="application/json" id="reel-data">[{"image":"/img/projects/web/pasted-image-1794226471145.webp","title":"롱블랙 x 뉴스픽스 협업 계약","year":"","link":"https://corp.newspicks.com/info/20250620"},{"image":"/img/projects/web/longblack-conf2025-day2-0178.webp","title":"2025 롱블랙 스토리 컨퍼런스","year":"","link":"https://magazine.hankyung.com/job-joy/article/202505020601d"},{"image":"/img/projects/web/pasted-image-1794226751986.webp","title":"카카오 벤처스, 롱블랙 투자","year":"","link":"https://www.techm.kr/news/articleView.html?idxno=92733"},{"image":"/img/projects/web/pasted-image-1794226814703.webp","title":"국내 최초, 동네서점 에디션","year":"","link":"https://n.news.naver.com/mnews/article/028/0002373441?sid=103"},{"image":"/img/projects/web/19222816-bddf-4400-9e56-43149cdd056a-2048x1648.webp","title":"폴인 페이퍼","year":"","link":"https://brunch.co.kr/@folin/89"},{"image":"/img/projects/web/pasted-image-1794230244661.webp","title":"폴인 라이브러리 팝업스토어","year":"","link":"https://www.journalist.or.kr/m/m_article.html?no=46924"},{"image":"/img/projects/web/pasted-image-1794230422457.webp","title":"리디 무료책 마케팅","year":"","link":"https://n.news.naver.com/mnews/article/023/0003394971?sid=103"},{"image":"/img/projects/web/pasted-image-1794230559469.webp","title":"리디셀렉트, 오리지널 콘텐츠","year":"","link":"https://it.chosun.com/news/articleView.html?idxno=2018091202741"},{"image":"/img/projects/web/pasted-image-1794230793579.webp","title":"롱블랙 카페","year":"","link":""},{"image":"/img/projects/web/dji_mimo_20260916_104550_0137_1789800579737_photo.webp","title":"롱블랙 카페","year":"","link":""}]</script>
+  </div>
+<style>
+/* 프로젝트 이미지 띠: 이름은 모두 reel- 로 시작해 기존 스타일과 섞이지 않는다 */
+html{overflow-x:clip}
+.reel-group{display:flex;flex-direction:column}
+.reel{width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;display:flex;flex-direction:column;gap:10px;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.reel.drag{cursor:grabbing}
+.reel-row{display:flex;gap:10px;width:max-content;will-change:transform}
+.reel-item{position:relative;flex:none;height:200px;margin:0;overflow:hidden;background:var(--mark);border-radius:6px;color:var(--fg);text-decoration:none}
+.reel-row + .reel-row .reel-item{height:150px}
+.reel-item img{display:block;height:100%;width:auto;pointer-events:none;-webkit-user-drag:none}
+.reel-cap{position:absolute;left:0;right:0;bottom:0;padding:24px 14px 10px;display:flex;justify-content:space-between;gap:12px;font-size:12.5px;line-height:1.4;color:#faf5ec;background:linear-gradient(to top,rgba(26,23,20,.72),rgba(26,23,20,0));opacity:0;transition:opacity .25s}
+.reel-y{font-family:var(--mono);font-size:11px;opacity:.85}
+.reel-item:hover .reel-cap,.reel-item:focus-visible .reel-cap{opacity:1}
+.reel-item:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.reel-note{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em;margin-top:14px}
+@media (hover:none){.reel-cap{opacity:1}}
+@media (max-width:560px){.reel-item{height:150px}.reel-row + .reel-row .reel-item{height:112px}}
+</style>
+<script>
+(function(){
+  var box=document.getElementById('reel'),A=document.getElementById('reel-a'),B=document.getElementById('reel-b'),src=document.getElementById('reel-data');
+  if(!box||!A||!B||!src) return;
+  var items=[]; try{items=JSON.parse(src.textContent)}catch(e){}
+  if(!items.length){box.parentNode.hidden=true;return}
+  // 접속할 때마다 무작위 순서
+  for(var i=items.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),x=items[i];items[i]=items[j];items[j]=x}
+  function make(it,clone){
+    var n=document.createElement(it.link?'a':'figure');
+    n.className='reel-item';
+    if(it.link){n.href=it.link;n.target='_blank';n.rel='noopener'}
+    if(clone){n.setAttribute('aria-hidden','true');if(it.link)n.tabIndex=-1}
+    var img=document.createElement('img');img.src=it.image;img.alt=clone?'':it.title;img.loading='lazy';img.decoding='async';img.draggable=false;
+    n.appendChild(img);
+    var cap=document.createElement('div');cap.className='reel-cap';
+    var a=document.createElement('span');a.textContent=it.title;
+    var b=document.createElement('span');b.className='reel-y';b.textContent=it.year||'';
+    cap.appendChild(a);cap.appendChild(b);n.appendChild(cap);
+    return n;
+  }
+  function fill(row,list){
+    if(!list.length) return;
+    var set=list.slice(); while(set.length<8) set=set.concat(list);
+    set.forEach(function(it){row.appendChild(make(it,false))});
+    set.forEach(function(it){row.appendChild(make(it,true))});
+  }
+  // 이미지가 적으면 한 줄, 많으면 두 줄
+  if(items.length<6){fill(A,items);B.remove();B=null}
+  else{var h=Math.ceil(items.length/2);fill(A,items.slice(0,h));fill(B,items.slice(h))}
+
+  var reduce=false; try{reduce=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+  var pa=0,pb=null,vel=0,hover=false,drag=false,moved=0,lastX=0,lastT=0,prev=0;
+  function wrap(x,el){var half=el.scrollWidth/2;if(!half)return x;while(x<=-half)x+=half;while(x>0)x-=half;return x}
+  function frame(t){
+    var dt=prev?Math.min((t-prev)/1000,.05):0; prev=t;
+    if(B&&pb===null&&B.scrollWidth) pb=-B.scrollWidth/2;
+    if(!drag){
+      var auto=(hover||reduce)?0:1;
+      pa+=(-38*auto+vel)*dt;
+      if(B&&pb!==null) pb+=(30*auto+vel)*dt;
+      vel*=Math.pow(.04,dt); if(Math.abs(vel)<2) vel=0;
+    }
+    pa=wrap(pa,A); A.style.transform='translateX('+pa+'px)';
+    if(B&&pb!==null){pb=wrap(pb,B);B.style.transform='translateX('+pb+'px)'}
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  box.addEventListener('mouseenter',function(){hover=true});
+  box.addEventListener('mouseleave',function(){hover=false});
+  box.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='mouse'&&e.button!==0) return;
+    drag=true;moved=0;vel=0;lastX=e.clientX;lastT=performance.now();
+    box.classList.add('drag');
+  });
+  box.addEventListener('pointermove',function(e){
+    if(!drag) return;
+    var now=performance.now(),dx=e.clientX-lastX,dt=Math.max((now-lastT)/1000,.001);
+    pa+=dx; if(pb!==null) pb+=dx; moved+=Math.abs(dx);
+    // 실제로 끌기 시작했을 때만 포인터를 붙잡는다 (그냥 누르면 링크가 열리도록)
+    if(moved>6&&!box.hasPointerCapture(e.pointerId)){try{box.setPointerCapture(e.pointerId)}catch(err){}}
+    vel=.8*vel+.2*(dx/dt); lastX=e.clientX; lastT=now;
+  });
+  function end(e){if(!drag)return;drag=false;box.classList.remove('drag');if(e.pointerType!=='mouse')hover=false}
+  box.addEventListener('pointerup',end);
+  box.addEventListener('pointercancel',end);
+  box.addEventListener('pointerleave',function(e){if(!box.hasPointerCapture(e.pointerId))end(e)});
+  // 끌다가 놓았을 때 링크가 열리지 않게
+  box.addEventListener('click',function(e){if(moved>6){e.preventDefault();e.stopPropagation()}},true);
+})();
+</script>
+
   <div class="group">
     <h2 class="label">강연</h2>
 

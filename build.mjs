@@ -47,6 +47,13 @@ items.forEach((it, i) => {
   }
 });
 // 프로젝트 이미지 띠: /admin 에서 관리하는 projects.json 을 읽는다. 보일 이미지가 없으면 띠를 아예 넣지 않는다.
+// 원본 대신 scripts/optimize-images.mjs 가 만든 가벼운 WebP 가 있으면 그것을 쓴다
+const webVersion = (p) => {
+  const m = p.match(/^\/img\/projects\/([^/]+)\.[^./]+$/);
+  if (!m) return p;
+  const web = `img/projects/web/${m[1]}.webp`;
+  return existsSync(web) ? "/" + web : p;
+};
 let reelItems = [];
 if (existsSync("projects.json")) {
   let data;
@@ -54,7 +61,7 @@ if (existsSync("projects.json")) {
   reelItems = (Array.isArray(data?.items) ? data.items : [])
     .filter((it) => it && it.image && !it.hidden)
     .map((it) => ({
-      image: String(it.image),
+      image: webVersion(String(it.image)),
       title: String(it.title || ""),
       year: String(it.year || ""),
       link: /^https?:\/\//.test(it.link || "") ? String(it.link) : "",
