@@ -1,0 +1,70 @@
+# ben-kim.co 관리 화면 설정
+# 저장하면 GitHub 저장소에 바로 커밋되고, 1~2분 뒤 사이트에 반영된다.
+
+backend:
+  name: github
+  repo: ben-kim8930/ben-kim.co
+  branch: main
+  commit_messages:
+    update: "관리 화면: {{path}} 수정"
+    uploadMedia: "관리 화면: 이미지 {{path}} 업로드"
+    deleteMedia: "관리 화면: 이미지 {{path}} 삭제"
+
+site_url: https://ben-kim.co
+display_url: https://ben-kim.co
+
+# 올린 사진은 이 폴더에 저장된다
+media_folder: img/projects
+public_folder: /img/projects
+
+# 휴대폰 사진 원본도 그대로 올리면 된다: 올리는 순간 WebP로 바꾸고 긴 변을 2000px 이하로 줄인다
+media_libraries:
+  default:
+    config:
+      max_file_size: 30000000
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2000
+          height: 2000
+
+collections:
+  - name: site
+    label: 사이트
+    files:
+      - name: projects
+        label: 프로젝트 이미지
+        file: projects.json
+        format: json
+        description: 이력과 강연 사이에 흐르는 이미지 띠. 순서는 접속할 때마다 무작위로 섞입니다.
+        fields:
+          - name: items
+            label: 이미지
+            label_singular: 이미지
+            widget: list
+            required: false
+            summary: "{{fields.year}} · {{fields.title}}"
+            fields:
+              - name: image
+                label: 사진
+                widget: image
+              - name: title
+                label: 프로젝트명
+                widget: string
+                hint: 마우스를 올리면 사진 위에 나오는 이름
+              - name: year
+                label: 연도
+                widget: string
+                required: false
+              - name: link
+                label: 링크
+                widget: string
+                required: false
+                hint: 누르면 열릴 주소(https:// 로 시작). 비워 두면 눌러도 아무 일도 없습니다.
+              - name: hidden
+                label: 사이트에서 숨기기
+                widget: boolean
+                default: false
+                required: false

@@ -4,3 +4,9 @@
   X-Robots-Tag: noindex
 /build.mjs
   X-Robots-Tag: noindex
+/projects.json
+  X-Robots-Tag: noindex
+/parts/*
+  X-Robots-Tag: noindex
+/admin/*
+  X-Robots-Tag: noindex

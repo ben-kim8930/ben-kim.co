@@ -1,6 +1,6 @@
 // content.txt 의 문구를 template.html 에 넣어 index.html 을 만든다.
 // 형식이 어긋나면 실패로 끝나고, 그때는 이전 버전이 사이트에 그대로 남는다.
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 const SECTIONS = 6;
 const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -46,5 +46,25 @@ items.forEach((it, i) => {
     html = html.split(key).join(v);
   }
 });
+// 프로젝트 이미지 띠: /admin 에서 관리하는 projects.json 을 읽는다. 보일 이미지가 없으면 띠를 아예 넣지 않는다.
+let reelItems = [];
+if (existsSync("projects.json")) {
+  let data;
+  try { data = JSON.parse(readFileSync("projects.json", "utf8")); } catch (e) { fail("projects.json 을 읽을 수 없습니다: " + e.message); }
+  reelItems = (Array.isArray(data?.items) ? data.items : [])
+    .filter((it) => it && it.image && !it.hidden)
+    .map((it) => ({
+      image: String(it.image),
+      title: String(it.title || ""),
+      year: String(it.year || ""),
+      link: /^https?:\/\//.test(it.link || "") ? String(it.link) : "",
+    }));
+}
+if (!html.includes("{{reel}}")) fail("template.html 에 {{reel}} 자리가 없습니다.");
+const reelHtml = reelItems.length
+  ? readFileSync("parts/reel.html", "utf8").replace("{{reel.data}}", () => JSON.stringify(reelItems).replace(/</g, "\\u003c"))
+  : "";
+html = html.replace(/\{\{reel\}\}\n?/, () => reelHtml);
+
 writeFileSync("index.html", html);
-console.log(`index.html 생성 완료 (${items.length}개 항목)`);
+console.log(`index.html 생성 완료 (${items.length}개 항목, 프로젝트 이미지 ${reelItems.length}장)`);
