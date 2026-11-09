@@ -2,21 +2,21 @@
   "items": [
     {
       "image": "/img/projects/pasted-image-1794226471145.png",
-      "title": "롱블랙 x 뉴스픽스 협업 계약",
+      "title": "롱블랙 x 뉴스픽스 협업",
       "year": "",
       "link": "https://corp.newspicks.com/info/20250620",
       "hidden": false
     },
     {
       "image": "/img/projects/longblack-conf2025-day2-0178.png",
-      "title": "2025 롱블랙 스토리 컨퍼런스",
+      "title": "2025  컨퍼런스",
       "year": "",
       "link": "https://magazine.hankyung.com/job-joy/article/202505020601d",
       "hidden": false
     },
     {
       "image": "/img/projects/pasted-image-1794226751986.png",
-      "title": "카카오 벤처스, 롱블랙 투자",
+      "title": "롱블랙 투자 유치",
       "year": "",
       "link": "https://www.techm.kr/news/articleView.html?idxno=92733",
       "hidden": false
@@ -37,7 +37,7 @@
     },
     {
       "image": "/img/projects/pasted-image-1794230244661.png",
-      "title": "폴인 라이브러리 팝업스토어",
+      "title": "폴인 라이브러리",
       "year": "",
       "link": "https://www.journalist.or.kr/m/m_article.html?no=46924",
       "hidden": false
@@ -51,7 +51,7 @@
     },
     {
       "image": "/img/projects/pasted-image-1794230559469.png",
-      "title": "리디셀렉트, 오리지널 콘텐츠",
+      "title": "오리지널 콘텐츠",
       "year": "",
       "link": "https://it.chosun.com/news/articleView.html?idxno=2018091202741",
       "hidden": false
@@ -66,6 +66,34 @@
     {
       "image": "/img/projects/dji_mimo_20260916_104550_0137_1789800579737_photo.png",
       "title": "롱블랙 카페",
+      "year": "",
+      "link": "",
+      "hidden": false
+    },
+    {
+      "image": "/img/projects/pasted-image-1794231472434.png",
+      "title": "뉴스픽스",
+      "year": "",
+      "link": "",
+      "hidden": false
+    },
+    {
+      "image": "/img/projects/pasted-image-1794231504922.png",
+      "title": "책 끝을 접다 인수",
+      "year": "",
+      "link": "",
+      "hidden": false
+    },
+    {
+      "image": "/img/projects/dji_mimo_20260911_175748_0008_1789117466840_photo.png",
+      "title": "롱블랙 성수 카페",
+      "year": "",
+      "link": "",
+      "hidden": false
+    },
+    {
+      "image": "/img/projects/r0011933.png",
+      "title": "롱블랙 x 에어로케이",
       "year": "",
       "link": "",
       "hidden": false
