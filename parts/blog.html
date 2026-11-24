@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{desc}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{desc}}">
+<meta property="og:type" content="{{ogtype}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:site_name" content="김종원">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://ben-kim.co/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{{canonical}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{fonts}}
+{{style}}
+</head>
+<body>
+<div class="page blog-page">
+  <header class="blog-top"><a href="/">김종원</a><span class="en">Ben Kim</span></header>
+
+{{main}}
+
+  <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span></footer>
+</div>
+<script>
+(function(){
+  var bar=document.querySelector('.post-filters'); if(!bar) return;
+  var rows=[].slice.call(document.querySelectorAll('.post-row'));
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    [].forEach.call(bar.children,function(x){x.classList.toggle('on',x===b)});
+    var f=b.getAttribute('data-f');
+    rows.forEach(function(r){r.hidden=!!f&&r.getAttribute('data-cat')!==f});
+  });
+})();
+</script>
+</body>
+</html>

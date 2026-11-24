@@ -1,6 +1,7 @@
 // content.txt 의 문구를 template.html 에 넣어 index.html 을 만든다.
 // 형식이 어긋나면 실패로 끝나고, 그때는 이전 버전이 사이트에 그대로 남는다.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { loadPosts, recentHtml, buildBlog, writeSitemap } from "./scripts/blog.mjs";
 
 const SECTIONS = 6;
 const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -73,5 +74,12 @@ const reelHtml = reelItems.length
   : "";
 html = html.replace(/\{\{reel\}\}\n?/, () => reelHtml);
 
+// 글: posts/*.md → /blog 목록과 글 페이지, 메인 페이지 최근 글 3개
+const posts = loadPosts();
+if (!html.includes("{{posts}}")) fail("template.html 에 {{posts}} 자리가 없습니다.");
+html = html.replace(/\{\{posts\}\}\n?/, () => recentHtml(posts));
+buildBlog(posts, readFileSync("template.html", "utf8"));
+writeSitemap(posts);
+
 writeFileSync("index.html", html);
-console.log(`index.html 생성 완료 (${items.length}개 항목, 프로젝트 이미지 ${reelItems.length}장)`);
+console.log(`index.html 생성 완료 (${items.length}개 항목, 프로젝트 이미지 ${reelItems.length}장, 글 ${posts.length}편)`);

@@ -10,3 +10,5 @@
   X-Robots-Tag: noindex
 /admin/*
   X-Robots-Tag: noindex
+/posts/*
+  X-Robots-Tag: noindex

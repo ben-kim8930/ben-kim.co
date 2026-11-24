@@ -13,6 +13,8 @@ on:
       - parts/**
       - img/projects/**
       - scripts/**
+      - posts/**
+      - img/posts/**
   workflow_dispatch:
 
 permissions:
@@ -32,7 +34,7 @@ jobs:
           node-version: 22
       - name: 띠용 이미지 만들기
         run: |
-          npm install --no-save --no-package-lock sharp@0.33
+          npm install --no-save --no-package-lock sharp@0.33 marked@18.0.10
           node scripts/optimize-images.mjs
       - name: index.html 만들기
         run: node build.mjs
@@ -40,7 +42,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html img/projects/web
+          git add -A index.html img/projects/web blog sitemap.xml
           if git diff --cached --quiet; then
             echo "바뀐 것 없음"
           else

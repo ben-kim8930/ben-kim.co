@@ -124,6 +124,45 @@ h1{font-weight:500;letter-spacing:-0.035em}
 .panel .refs-area{background:var(--refs);margin:32px -20px -28px;padding:20px 20px 24px}
 .panel .refs-area .reflabel{margin:0 0 4px;padding-top:0;border-top:0}
 @media (max-width:560px){.panel .refs-area{margin:28px -16px -24px;padding:18px 16px 20px}}
+/* 글: 메인 최근 글, /blog 목록, 글 페이지 */
+.posts{display:flex;flex-direction:column}
+.post-row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:6px 32px;border-top:1px solid var(--line);padding-block:20px;text-decoration:none;color:var(--fg)}
+.post-row[hidden]{display:none}
+.post-row .year{padding-top:3px}
+.post-main{display:flex;flex-direction:column;gap:4px;min-width:0}
+.post-title{font-size:17px;font-weight:500;letter-spacing:-0.01em;line-height:1.5}
+.post-row:hover .post-title{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+.post-sum{font-size:14px;color:var(--muted);line-height:1.65}
+.post-cat{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.post-more{align-self:flex-start;margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.04em;text-decoration:none}
+.post-more:hover{color:var(--fg)}
+.post-empty{color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
+.post-filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.post-filters button{appearance:none;font:inherit;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 14px;min-height:32px;cursor:pointer}
+.post-filters button:hover{color:var(--fg);border-color:var(--muted)}
+.post-filters button.on{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.blog-page{gap:56px}
+.blog-top{display:flex;align-items:baseline;gap:12px}
+.blog-top a{font-size:22px;font-weight:500;letter-spacing:-0.03em;text-decoration:none}
+.blog-top .en{margin-top:0}
+.blog-h{font-size:17px}
+.post{display:flex;flex-direction:column}
+.post-meta{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.04em;margin:0 0 12px}
+.post-h{font-size:clamp(26px,5vw,36px);font-weight:500;letter-spacing:-0.03em;line-height:1.3;margin:0 0 40px}
+.prose{font-size:17px;line-height:1.9;overflow-wrap:anywhere}
+.prose > *{margin:0 0 1.3em}
+.prose h2{font-size:21px;font-weight:600;letter-spacing:-0.02em;line-height:1.4;margin:2.2em 0 .8em}
+.prose h3{font-size:18px;font-weight:600;margin:1.8em 0 .6em}
+.prose ul,.prose ol{list-style:revert;padding-left:1.4em;display:block}
+.prose li{margin:.25em 0}
+.prose blockquote{margin-inline:0;padding:2px 0 2px 20px;border-left:2px solid var(--fg);color:var(--fg);font-size:18px}
+.prose blockquote p{margin:0 0 .6em}
+.prose img{display:block;max-width:100%;height:auto;border-radius:6px;margin:2em 0}
+.prose hr{border:0;border-top:1px solid var(--line);margin:2.5em 0}
+.prose code{font-family:var(--mono);font-size:.88em;background:var(--mark);padding:1px 5px;border-radius:3px}
+.prose pre{background:var(--surface);padding:16px;border-radius:6px;overflow-x:auto}
+.prose pre code{background:none;padding:0}
+@media (max-width:560px){.post-row{grid-template-columns:1fr;gap:4px}.prose{font-size:16px}}
 </style>
 <link rel="canonical" href="https://ben-kim.co/">
 <script type="application/ld+json">
@@ -285,6 +324,7 @@ h1{font-weight:500;letter-spacing:-0.035em}
     <p class="talks"><a target="_blank" rel="noopener" href="https://m.blog.naver.com/kmablog/224189003215">한국능률협회(KMA)</a>, <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ZHw1A_RhTjQ&amp;t=114s">월급쟁이부사장 EP36</a>, <a target="_blank" rel="noopener" href="https://www.news1.kr/industry/sb-founded/5065654">시몬스 스튜디오</a>, <a target="_blank" rel="noopener" href="https://www.conan.team/">CONAN 콘텐츠 얼라이언스</a>, 삼성물산, 롯데백화점, 하이아웃풋클럽, 동아일보, HFK코리아 등</p>
   </div>
 
+{{posts}}
   <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span><span id="visits" hidden></span></footer>
 </div>
 <script>

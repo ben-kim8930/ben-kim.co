@@ -68,3 +68,45 @@ collections:
                 widget: boolean
                 default: false
                 required: false
+
+  - name: posts
+    label: 글
+    label_singular: 글
+    folder: posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{year}}{{month}}{{day}}-{{slug}}"
+    summary: "{{date}} · {{title}}"
+    sortable_fields: [date, title]
+    media_folder: /img/posts
+    public_folder: /img/posts
+    description: ben-kim.co/blog 에 올라가는 글. 저장하면 1~2분 뒤 사이트에 반영됩니다.
+    fields:
+      - name: title
+        label: 제목
+        widget: string
+      - name: date
+        label: 날짜
+        widget: datetime
+        format: YYYY-MM-DD
+        time_format: false
+        default: "{{now}}"
+      - name: category
+        label: 분류
+        widget: select
+        options: [생각, 문장]
+        required: false
+      - name: summary
+        label: 한 줄 요약
+        widget: string
+        required: false
+        hint: 목록과 공유 미리보기에 나옵니다. 비워 두면 본문 앞부분을 씁니다.
+      - name: draft
+        label: 초안 (사이트에 올리지 않음)
+        widget: boolean
+        default: false
+        required: false
+      - name: body
+        label: 본문
+        widget: markdown
