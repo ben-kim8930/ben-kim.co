@@ -47,14 +47,16 @@ export function loadPosts() {
     const slug = f.replace(/\.md$/, "");
     const html = marked.parse(body, { gfm: true, breaks: true });
     const text = plain(html);
-    const date = String(data.date || "").slice(0, 10);
+    // 날짜는 "2026-11-24 12:10" 처럼 시간까지 들어온다: 화면엔 날짜만, 정렬은 시간까지
+    const stamp = String(data.date || "").trim().replace("T", " ");
+    const date = stamp.slice(0, 10);
     posts.push({
-      slug, title: String(data.title), date, category: String(data.category || ""),
+      slug, title: String(data.title), date, stamp, category: String(data.category || ""),
       summary: String(data.summary || "") || cut(text, 110),
       html, url: `/blog/${encodeURIComponent(slug)}/`,
     });
   }
-  return posts.sort((a, b) => (b.date + b.slug).localeCompare(a.date + a.slug));
+  return posts.sort((a, b) => b.stamp.localeCompare(a.stamp) || b.slug.localeCompare(a.slug));
 }
 
 // 메인 페이지 강연 아래 '글' 묶음: 최근 3개

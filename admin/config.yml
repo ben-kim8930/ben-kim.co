@@ -87,11 +87,11 @@ collections:
         label: 제목
         widget: string
       - name: date
-        label: 날짜
+        label: 날짜·시간
         widget: datetime
-        format: YYYY-MM-DD
-        time_format: false
+        format: YYYY-MM-DD HH:mm
         default: "{{now}}"
+        hint: 같은 날 쓴 글은 시간이 늦은 글이 위에 나옵니다. 사이트에는 날짜만 보입니다.
       - name: category
         label: 분류
         widget: select
