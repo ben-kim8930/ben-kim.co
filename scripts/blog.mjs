@@ -1,6 +1,7 @@
 // posts/*.md (관리 화면의 '글')를 읽어 /blog 목록과 글 페이지를 만든다.
 import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, rmSync } from "node:fs";
 import { createRequire } from "node:module";
+import { execFileSync } from "node:child_process";
 
 const SITE = "https://ben-kim.co";
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -35,6 +36,15 @@ const plain = (html) => html.replace(/<\/(p|h\d|li|blockquote|pre|tr)>|<br\s*\/?
 const cut = (t, n) => (t.length > n ? t.slice(0, n).replace(/\s+\S*$/, "") + "…" : t);
 const fmtDate = (d) => (d || "").replace(/-/g, ".");
 
+function firstSaved(file) {
+  try {
+    const iso = execFileSync("git", ["log", "--follow", "--diff-filter=A", "--format=%cI", "--", file], { encoding: "utf8" }).trim().split("\n").pop();
+    if (!iso) return "";
+    const kst = new Date(new Date(iso).getTime() + 9 * 3600e3).toISOString();
+    return kst.slice(0, 10) + " " + kst.slice(11, 16);
+  } catch { return ""; }
+}
+
 export function loadPosts() {
   if (!existsSync("posts")) return [];
   const require = createRequire(import.meta.url);
@@ -48,7 +58,12 @@ export function loadPosts() {
     const html = marked.parse(body, { gfm: true, breaks: true });
     const text = plain(html);
     // 날짜는 "2026-11-24 12:10" 처럼 시간까지 들어온다: 화면엔 날짜만, 정렬은 시간까지
-    const stamp = String(data.date || "").trim().replace("T", " ");
+    let stamp = String(data.date || "").trim().replace("T", " ");
+    // 시간이 없으면(예전 관리 화면에서 저장한 글) 그 글이 처음 저장된 시각을 한국 시간으로 쓴다
+    if (!/\d{1,2}:\d{2}/.test(stamp)) {
+      const t = firstSaved(`posts/${f}`);
+      if (t && (!stamp || t.startsWith(stamp.slice(0, 10)))) stamp = t;
+    }
     const date = stamp.slice(0, 10);
     posts.push({
       slug, title: String(data.title), date, stamp, category: String(data.category || ""),
