@@ -189,16 +189,16 @@ h1{font-weight:500;letter-spacing:-0.035em}
   <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span></footer>
 </div>
 <script>
-// 조회수: 글 페이지는 한 세션에 한 번만 올리고, 목록은 한 번에 받아 온다
+// 조회수: 글 페이지는 열릴 때마다 올리고, 목록은 한 번에 받아 온다
 (function(){
   var fmt=function(n){return '조회 '+n.toLocaleString('ko-KR')};
   var meta=document.querySelector('.post-meta[data-slug]');
   if(meta){
-    var s=meta.getAttribute('data-slug'), seen=false, k='pv:'+s;
-    try{seen=sessionStorage.getItem(k)==='1'}catch(e){}
-    var req=seen?fetch('/api/views?slugs='+encodeURIComponent(s)).then(function(r){return r.ok?r.json():null}).then(function(d){return d&&d.counts?d.counts[s]:null})
-                :fetch('/api/views?slug='+encodeURIComponent(s),{method:'POST'}).then(function(r){return r.ok?r.json():null}).then(function(d){if(d){try{sessionStorage.setItem(k,'1')}catch(e){}}return d?d.count:null});
-    req.then(function(n){if(typeof n!=='number')return;var v=meta.querySelector('.views');v.textContent=fmt(n);v.hidden=false}).catch(function(){});
+    // 글이 열릴 때마다(새로고침·다시 들어오기 포함) 1씩 센다
+    var s=meta.getAttribute('data-slug');
+    fetch('/api/views?slug='+encodeURIComponent(s),{method:'POST',cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+      if(!d||typeof d.count!=='number')return;var v=meta.querySelector('.views');v.textContent=fmt(d.count);v.hidden=false;
+    }).catch(function(){});
   }
   var rows=[].slice.call(document.querySelectorAll('.post-row[data-slug]'));
   if(rows.length){
