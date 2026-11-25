@@ -163,6 +163,14 @@ h1{font-weight:500;letter-spacing:-0.035em}
 .prose pre{background:var(--surface);padding:16px;border-radius:6px;overflow-x:auto}
 .prose pre code{background:none;padding:0}
 @media (max-width:560px){.post-row{grid-template-columns:1fr;gap:4px}.prose{font-size:16px}}
+.blog-link{align-self:flex-start;margin-top:14px;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border:1px solid var(--fg);border-radius:999px;font-size:15px;font-weight:500;letter-spacing:-0.01em;text-decoration:none;color:var(--fg);transition:background .15s,color .15s}
+.blog-link:hover{background:var(--fg);color:var(--bg)}
+.blog-link span{font-family:var(--mono);font-size:14px}
+.views::before{content:" · "}
+.post-row .views{display:block}
+.post-row .views::before{content:none}
+.post-row .views:not([hidden]){margin-top:2px}
+@media (max-width:560px){.post-row .year{display:flex;gap:8px}.post-row .views::before{content:"· "}.post-row .views:not([hidden]){display:inline;margin:0}}
 </style>
 <link rel="canonical" href="https://ben-kim.co/">
 <script type="application/ld+json">
@@ -241,6 +249,7 @@ h1{font-weight:500;letter-spacing:-0.035em}
         <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/ben-%EC%A2%85%EC%9B%90-kim-674617166/" class="sns" aria-label="LinkedIn" title="LinkedIn"><span class="ico ico-in"></span></a>
         <a target="_blank" rel="noopener" href="https://www.instagram.com/kjw8930/" class="sns" aria-label="Instagram" title="Instagram"><span class="ico ico-ig"></span></a>
       </div>
+      <a class="blog-link" href="/blog/">블로그<span aria-hidden="true">→</span></a>
     </div>
   </header>
 
@@ -324,7 +333,6 @@ h1{font-weight:500;letter-spacing:-0.035em}
     <p class="talks"><a target="_blank" rel="noopener" href="https://m.blog.naver.com/kmablog/224189003215">한국능률협회(KMA)</a>, <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ZHw1A_RhTjQ&amp;t=114s">월급쟁이부사장 EP36</a>, <a target="_blank" rel="noopener" href="https://www.news1.kr/industry/sb-founded/5065654">시몬스 스튜디오</a>, <a target="_blank" rel="noopener" href="https://www.conan.team/">CONAN 콘텐츠 얼라이언스</a>, 삼성물산, 롯데백화점, 하이아웃풋클럽, 동아일보, HFK코리아 등</p>
   </div>
 
-{{posts}}
   <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span><span id="visits" hidden></span></footer>
 </div>
 <script>

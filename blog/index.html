@@ -160,6 +160,14 @@ h1{font-weight:500;letter-spacing:-0.035em}
 .prose pre{background:var(--surface);padding:16px;border-radius:6px;overflow-x:auto}
 .prose pre code{background:none;padding:0}
 @media (max-width:560px){.post-row{grid-template-columns:1fr;gap:4px}.prose{font-size:16px}}
+.blog-link{align-self:flex-start;margin-top:14px;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border:1px solid var(--fg);border-radius:999px;font-size:15px;font-weight:500;letter-spacing:-0.01em;text-decoration:none;color:var(--fg);transition:background .15s,color .15s}
+.blog-link:hover{background:var(--fg);color:var(--bg)}
+.blog-link span{font-family:var(--mono);font-size:14px}
+.views::before{content:" · "}
+.post-row .views{display:block}
+.post-row .views::before{content:none}
+.post-row .views:not([hidden]){margin-top:2px}
+@media (max-width:560px){.post-row .year{display:flex;gap:8px}.post-row .views::before{content:"· "}.post-row .views:not([hidden]){display:inline;margin:0}}
 </style>
 </head>
 <body>
@@ -170,13 +178,35 @@ h1{font-weight:500;letter-spacing:-0.035em}
     <h1 class="label blog-h">글</h1>
     <div class="post-filters" role="group" aria-label="분류"><button type="button" class="on" data-f="">전체</button><button type="button" data-f="생각">생각</button><button type="button" data-f="문장">문장</button></div>
     <div class="posts">
-      <a class="post-row" href="/blog/20261124-%ED%9A%8C%EC%82%AC%EC%9D%98-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%8A%94-%EA%B3%A7-%ED%9A%8C%EC%82%AC%EC%9D%98-%EC%A0%84%EB%9E%B5%EC%9E%85%EB%8B%88%EB%8B%A4/" data-cat="생각"><span class="year">2026.11.24</span><span class="post-main"><span class="post-cat">생각</span><span class="post-title">회사의 스토리는 곧 회사의 전략입니다</span><span class="post-sum">창업자는 매일 조금씩 전략을 수정하고 발전시킵니다. 머릿속에서는 그저 매일 조금씩 조정하고 있다고 생각하죠. 하지만 한 분기가 지나고 나면, 실제 전략은 처음 출발했을 때와 상당히 달라져 있는…</span></span></a>
-      <a class="post-row" href="/blog/20261124-%EB%A7%88%EC%8A%A4%EB%8B%A4-%EB%AC%B4%EB%84%A4%EC%95%84%ED%82%A4.-%EC%A7%80%EC%A0%81%EC%9E%90%EB%B3%B8%EB%A1%A0-%EC%A4%91%EC%97%90%EC%84%9C/" data-cat="문장"><span class="year">2026.11.24</span><span class="post-main"><span class="post-cat">문장</span><span class="post-title">마스다 무네아키. 지적자본론</span><span class="post-sum">기획을 세우려면 자유로워야 한다. 관리받는 편안함에 젖어 있어서는 안 된다. _마스다 무네아키, 지적자본론 중에서</span></span></a>
+      <a class="post-row" href="/blog/20261124-%ED%9A%8C%EC%82%AC%EC%9D%98-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%8A%94-%EA%B3%A7-%ED%9A%8C%EC%82%AC%EC%9D%98-%EC%A0%84%EB%9E%B5%EC%9E%85%EB%8B%88%EB%8B%A4/" data-cat="생각" data-slug="20261124-회사의-스토리는-곧-회사의-전략입니다"><span class="year">2026.11.24<span class="views" hidden></span></span><span class="post-main"><span class="post-cat">생각</span><span class="post-title">회사의 스토리는 곧 회사의 전략입니다</span><span class="post-sum">창업자는 매일 조금씩 전략을 수정하고 발전시킵니다. 머릿속에서는 그저 매일 조금씩 조정하고 있다고 생각하죠. 하지만 한 분기가 지나고 나면, 실제 전략은 처음 출발했을 때와 상당히 달라져 있는…</span></span></a>
+      <a class="post-row" href="/blog/20261124-%EB%A7%88%EC%8A%A4%EB%8B%A4-%EB%AC%B4%EB%84%A4%EC%95%84%ED%82%A4.-%EC%A7%80%EC%A0%81%EC%9E%90%EB%B3%B8%EB%A1%A0-%EC%A4%91%EC%97%90%EC%84%9C/" data-cat="문장" data-slug="20261124-마스다-무네아키.-지적자본론-중에서"><span class="year">2026.11.24<span class="views" hidden></span></span><span class="post-main"><span class="post-cat">문장</span><span class="post-title">마스다 무네아키. 지적자본론</span><span class="post-sum">기획을 세우려면 자유로워야 한다. 관리받는 편안함에 젖어 있어서는 안 된다. _마스다 무네아키, 지적자본론 중에서</span></span></a>
     </div>
   </div>
 
   <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span></footer>
 </div>
+<script>
+// 조회수: 글 페이지는 한 세션에 한 번만 올리고, 목록은 한 번에 받아 온다
+(function(){
+  var fmt=function(n){return '조회 '+n.toLocaleString('ko-KR')};
+  var meta=document.querySelector('.post-meta[data-slug]');
+  if(meta){
+    var s=meta.getAttribute('data-slug'), seen=false, k='pv:'+s;
+    try{seen=sessionStorage.getItem(k)==='1'}catch(e){}
+    var req=seen?fetch('/api/views?slugs='+encodeURIComponent(s)).then(function(r){return r.ok?r.json():null}).then(function(d){return d&&d.counts?d.counts[s]:null})
+                :fetch('/api/views?slug='+encodeURIComponent(s),{method:'POST'}).then(function(r){return r.ok?r.json():null}).then(function(d){if(d){try{sessionStorage.setItem(k,'1')}catch(e){}}return d?d.count:null});
+    req.then(function(n){if(typeof n!=='number')return;var v=meta.querySelector('.views');v.textContent=fmt(n);v.hidden=false}).catch(function(){});
+  }
+  var rows=[].slice.call(document.querySelectorAll('.post-row[data-slug]'));
+  if(rows.length){
+    var slugs=rows.map(function(r){return r.getAttribute('data-slug')});
+    fetch('/api/views?slugs='+slugs.map(encodeURIComponent).join(',')).then(function(r){return r.ok?r.json():null}).then(function(d){
+      if(!d||!d.counts)return;
+      rows.forEach(function(r){var n=d.counts[r.getAttribute('data-slug')];if(typeof n!=='number')return;var v=r.querySelector('.views');v.textContent=fmt(n);v.hidden=false});
+    }).catch(function(){});
+  }
+})();
+</script>
 <script>
 (function(){
   var bar=document.querySelector('.post-filters'); if(!bar) return;

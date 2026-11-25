@@ -100,7 +100,7 @@ export function buildBlog(posts, templateHtml) {
 
   const cats = [...new Set(posts.map((p) => p.category).filter(Boolean))];
   const list = posts.length
-    ? posts.map((p) => `      <a class="post-row" href="${escAttr(p.url)}" data-cat="${escAttr(p.category)}"><span class="year">${esc(fmtDate(p.date))}</span><span class="post-main">${p.category ? `<span class="post-cat">${esc(p.category)}</span>` : ""}<span class="post-title">${esc(p.title)}</span><span class="post-sum">${esc(p.summary)}</span></span></a>`).join("\n")
+    ? posts.map((p) => `      <a class="post-row" href="${escAttr(p.url)}" data-cat="${escAttr(p.category)}" data-slug="${escAttr(p.slug)}"><span class="year">${esc(fmtDate(p.date))}<span class="views" hidden></span></span><span class="post-main">${p.category ? `<span class="post-cat">${esc(p.category)}</span>` : ""}<span class="post-title">${esc(p.title)}</span><span class="post-sum">${esc(p.summary)}</span></span></a>`).join("\n")
     : `      <p class="post-empty">아직 글이 없습니다.</p>`;
   const filters = cats.length > 1
     ? `    <div class="post-filters" role="group" aria-label="분류"><button type="button" class="on" data-f="">전체</button>${cats.map((c) => `<button type="button" data-f="${escAttr(c)}">${esc(c)}</button>`).join("")}</div>\n`
@@ -128,7 +128,7 @@ ${list}
       canonical: `${SITE}${p.url}`,
       ogtype: "article",
       main: `  <article class="post">
-    <p class="post-meta">${esc(fmtDate(p.date))}${p.category ? ` · ${esc(p.category)}` : ""}</p>
+    <p class="post-meta" data-slug="${escAttr(p.slug)}">${esc(fmtDate(p.date))}${p.category ? ` · ${esc(p.category)}` : ""}<span class="views" hidden></span></p>
     <h1 class="post-h">${esc(p.title)}</h1>
     <div class="prose">
 ${p.html}

@@ -163,6 +163,14 @@ h1{font-weight:500;letter-spacing:-0.035em}
 .prose pre{background:var(--surface);padding:16px;border-radius:6px;overflow-x:auto}
 .prose pre code{background:none;padding:0}
 @media (max-width:560px){.post-row{grid-template-columns:1fr;gap:4px}.prose{font-size:16px}}
+.blog-link{align-self:flex-start;margin-top:14px;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border:1px solid var(--fg);border-radius:999px;font-size:15px;font-weight:500;letter-spacing:-0.01em;text-decoration:none;color:var(--fg);transition:background .15s,color .15s}
+.blog-link:hover{background:var(--fg);color:var(--bg)}
+.blog-link span{font-family:var(--mono);font-size:14px}
+.views::before{content:" · "}
+.post-row .views{display:block}
+.post-row .views::before{content:none}
+.post-row .views:not([hidden]){margin-top:2px}
+@media (max-width:560px){.post-row .year{display:flex;gap:8px}.post-row .views::before{content:"· "}.post-row .views:not([hidden]){display:inline;margin:0}}
 </style>
 <link rel="canonical" href="https://ben-kim.co/">
 <script type="application/ld+json">
@@ -241,6 +249,7 @@ h1{font-weight:500;letter-spacing:-0.035em}
         <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/ben-%EC%A2%85%EC%9B%90-kim-674617166/" class="sns" aria-label="LinkedIn" title="LinkedIn"><span class="ico ico-in"></span></a>
         <a target="_blank" rel="noopener" href="https://www.instagram.com/kjw8930/" class="sns" aria-label="Instagram" title="Instagram"><span class="ico ico-ig"></span></a>
       </div>
+      <a class="blog-link" href="/blog/">블로그<span aria-hidden="true">→</span></a>
     </div>
   </header>
 
@@ -436,14 +445,6 @@ html{overflow-x:clip}
     <p class="talks"><a target="_blank" rel="noopener" href="https://m.blog.naver.com/kmablog/224189003215">한국능률협회(KMA)</a>, <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ZHw1A_RhTjQ&amp;t=114s">월급쟁이부사장 EP36</a>, <a target="_blank" rel="noopener" href="https://www.news1.kr/industry/sb-founded/5065654">시몬스 스튜디오</a>, <a target="_blank" rel="noopener" href="https://www.conan.team/">CONAN 콘텐츠 얼라이언스</a>, 삼성물산, 롯데백화점, 하이아웃풋클럽, 동아일보, HFK코리아 등</p>
   </div>
 
-  <div class="group">
-    <h2 class="label">글</h2>
-    <div class="posts">
-      <a class="post-row" href="/blog/20261124-%ED%9A%8C%EC%82%AC%EC%9D%98-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%8A%94-%EA%B3%A7-%ED%9A%8C%EC%82%AC%EC%9D%98-%EC%A0%84%EB%9E%B5%EC%9E%85%EB%8B%88%EB%8B%A4/"><span class="year">2026.11.24</span><span class="post-main"><span class="post-title">회사의 스토리는 곧 회사의 전략입니다</span><span class="post-sum">창업자는 매일 조금씩 전략을 수정하고 발전시킵니다. 머릿속에서는 그저 매일 조금씩 조정하고 있다고 생각하죠. 하지만 한 분기가 지나고 나면, 실제 전략은 처음 출발했을 때와 상당히 달라져 있는…</span></span></a>
-      <a class="post-row" href="/blog/20261124-%EB%A7%88%EC%8A%A4%EB%8B%A4-%EB%AC%B4%EB%84%A4%EC%95%84%ED%82%A4.-%EC%A7%80%EC%A0%81%EC%9E%90%EB%B3%B8%EB%A1%A0-%EC%A4%91%EC%97%90%EC%84%9C/"><span class="year">2026.11.24</span><span class="post-main"><span class="post-title">마스다 무네아키. 지적자본론</span><span class="post-sum">기획을 세우려면 자유로워야 한다. 관리받는 편안함에 젖어 있어서는 안 된다. _마스다 무네아키, 지적자본론 중에서</span></span></a>
-    </div>
-    <a class="post-more" href="/blog/">전체 보기 2</a>
-  </div>
   <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span><span id="visits" hidden></span></footer>
 </div>
 <script>

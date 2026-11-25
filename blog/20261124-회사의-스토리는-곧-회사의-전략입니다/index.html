@@ -160,6 +160,14 @@ h1{font-weight:500;letter-spacing:-0.035em}
 .prose pre{background:var(--surface);padding:16px;border-radius:6px;overflow-x:auto}
 .prose pre code{background:none;padding:0}
 @media (max-width:560px){.post-row{grid-template-columns:1fr;gap:4px}.prose{font-size:16px}}
+.blog-link{align-self:flex-start;margin-top:14px;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border:1px solid var(--fg);border-radius:999px;font-size:15px;font-weight:500;letter-spacing:-0.01em;text-decoration:none;color:var(--fg);transition:background .15s,color .15s}
+.blog-link:hover{background:var(--fg);color:var(--bg)}
+.blog-link span{font-family:var(--mono);font-size:14px}
+.views::before{content:" · "}
+.post-row .views{display:block}
+.post-row .views::before{content:none}
+.post-row .views:not([hidden]){margin-top:2px}
+@media (max-width:560px){.post-row .year{display:flex;gap:8px}.post-row .views::before{content:"· "}.post-row .views:not([hidden]){display:inline;margin:0}}
 </style>
 </head>
 <body>
@@ -167,7 +175,7 @@ h1{font-weight:500;letter-spacing:-0.035em}
   <header class="blog-top"><a href="/">김종원</a><span class="en">Ben Kim</span></header>
 
   <article class="post">
-    <p class="post-meta">2026.11.24 · 생각</p>
+    <p class="post-meta" data-slug="20261124-회사의-스토리는-곧-회사의-전략입니다">2026.11.24 · 생각<span class="views" hidden></span></p>
     <h1 class="post-h">회사의 스토리는 곧 회사의 전략입니다</h1>
     <div class="prose">
 <p>창업자는 매일 조금씩 전략을 수정하고 발전시킵니다. 머릿속에서는 그저 매일 조금씩 조정하고 있다고 생각하죠. 하지만 한 분기가 지나고 나면, 실제 전략은 처음 출발했을 때와 상당히 달라져 있는 경우가 많습니다.</p>
@@ -206,6 +214,28 @@ h1{font-weight:500;letter-spacing:-0.035em}
 
   <footer><span>2026</span><span class="mail">ben.kim8930@gmail.com</span></footer>
 </div>
+<script>
+// 조회수: 글 페이지는 한 세션에 한 번만 올리고, 목록은 한 번에 받아 온다
+(function(){
+  var fmt=function(n){return '조회 '+n.toLocaleString('ko-KR')};
+  var meta=document.querySelector('.post-meta[data-slug]');
+  if(meta){
+    var s=meta.getAttribute('data-slug'), seen=false, k='pv:'+s;
+    try{seen=sessionStorage.getItem(k)==='1'}catch(e){}
+    var req=seen?fetch('/api/views?slugs='+encodeURIComponent(s)).then(function(r){return r.ok?r.json():null}).then(function(d){return d&&d.counts?d.counts[s]:null})
+                :fetch('/api/views?slug='+encodeURIComponent(s),{method:'POST'}).then(function(r){return r.ok?r.json():null}).then(function(d){if(d){try{sessionStorage.setItem(k,'1')}catch(e){}}return d?d.count:null});
+    req.then(function(n){if(typeof n!=='number')return;var v=meta.querySelector('.views');v.textContent=fmt(n);v.hidden=false}).catch(function(){});
+  }
+  var rows=[].slice.call(document.querySelectorAll('.post-row[data-slug]'));
+  if(rows.length){
+    var slugs=rows.map(function(r){return r.getAttribute('data-slug')});
+    fetch('/api/views?slugs='+slugs.map(encodeURIComponent).join(',')).then(function(r){return r.ok?r.json():null}).then(function(d){
+      if(!d||!d.counts)return;
+      rows.forEach(function(r){var n=d.counts[r.getAttribute('data-slug')];if(typeof n!=='number')return;var v=r.querySelector('.views');v.textContent=fmt(n);v.hidden=false});
+    }).catch(function(){});
+  }
+})();
+</script>
 <script>
 (function(){
   var bar=document.querySelector('.post-filters'); if(!bar) return;
